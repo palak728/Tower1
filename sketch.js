@@ -55,11 +55,11 @@ function setup() {
 
   blocks9 = new Block(700,95,30,40);
   
-  ball = Bodies.circle(50,200,20)
+  ball = Bodies.circle(50,200,20);
 
-  World.add(world,ball)
+  World.add(world,ball);
 
-  slingShot = new Slingshot (this.ball,{ x: 100, y: 200 })
+  slingShot = new Slingshot (this.ball,{ x: 100, y: 200 });
 
   
 
@@ -110,9 +110,21 @@ function draw() {
 
   blocks9.display();
 
-  slingShot.display();
  
  
+ fill("blue")
  imageMode(CENTER)
  image(polygon_img, ball.position.x,ball.position.y,40,40)
+ slingShot.display();
 }
+
+function mouseDragged(){
+  Matter.Body.setPosition(this.ball,{ x: mouseX, y: mouseY})
+}
+
+
+function mouseReleased(){
+  slingShot.fly()
+}
+  
+
